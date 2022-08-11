@@ -5,7 +5,7 @@
 #ifndef WIN32
 #include <netinet/in.h>
 # ifdef _XOPEN_SOURCE_EXTENDED
-#  include <arpa/inet.h>
+#include <arpa/inet.h>
 # endif
 #include <sys/socket.h>
 #endif
@@ -16,8 +16,11 @@
 #include <event2/event.h>
 static const char MESSAGE[] = "Hello, World!\n";
 static const int PORT = 9995;
-static void listener_cb(struct evconnlistener *, evutil_socket_t,
-    struct sockaddr *, int socklen, void *);
+static void listener_cb(struct evconnlistener *,
+                        evutil_socket_t,
+                        struct sockaddr *,
+                        int socklen,
+                        void *);
 static void conn_writecb(struct bufferevent *, void *);
 static void conn_eventcb(struct bufferevent *, short, void *);
 static void signal_cb(evutil_socket_t, short, void *);
